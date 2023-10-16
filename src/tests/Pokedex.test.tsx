@@ -20,14 +20,27 @@ describe('Teste o componente <Pokedex.tsx />', () => {
     expect(screen.getByText(/charmander/i));
 
     await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
-    await userEvent.click(btnNext);
+    expect(screen.getByText(/caterpie/i));
 
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/ekans/i));
+
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/alakazam/i));
+
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/mew/i));
+
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/rapidash/i));
+
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/snorlax/i));
+
+    await userEvent.click(btnNext);
+    expect(screen.getByText(/dragonair/i));
+
+    await userEvent.click(btnNext);
     expect(screen.getByText(/pikachu/i));
   });
 
@@ -42,10 +55,18 @@ describe('Teste o componente <Pokedex.tsx />', () => {
     expect(allBtn[5]).toHaveTextContent(/normal/i);
     expect(allBtn[6]).toHaveTextContent(/dragon/i);
   });
-  test('Teste se a Pokédex contém um botão para resetar o filtro.', () => {
+  test('Teste se a Pokédex contém um botão para resetar o filtro.', async () => {
     render(<App />, { wrapper: BrowserRouter });
-    const btnReset = screen.getByText(/all/i);
 
+    const btnFire = screen.getByText(/fire/i);
+
+    await userEvent.click(btnFire);
+    expect(screen.getByText(/charmander/i));
+
+    const btnReset = screen.getByText(/all/i);
     expect(btnReset).toBeInTheDocument();
+
+    await userEvent.click(btnReset);
+    expect(screen.getByText(/pikachu/i));
   });
 });
