@@ -6,9 +6,9 @@ import App from '../App';
 describe('Teste o componente <Pokedex.tsx />', () => {
   test('Teste se a página contém um heading h2 com o texto Encountered Pokémon.', () => {
     render(<App />, { wrapper: BrowserRouter });
-    const headingAbout = screen.getByRole('heading', { level: 2 });
+    const headingText = screen.getByRole('heading', { level: 2 });
 
-    expect(headingAbout).toHaveTextContent(/encountered pokémon/i);
+    expect(headingText).toHaveTextContent(/encountered pokémon/i);
   });
   test('Teste se é exibido o próximo Pokémon da lista quando o botão Próximo Pokémon é clicado.', async () => {
     render(<App />, { wrapper: BrowserRouter });
