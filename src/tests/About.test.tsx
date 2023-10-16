@@ -12,7 +12,7 @@ describe('Teste o componente <About.tsx />', () => {
     render(<About />, { wrapper: BrowserRouter });
     const headingAbout = screen.getByRole('heading', { level: 2 });
 
-    expect(headingAbout).toBeInTheDocument();
+    expect(headingAbout).toHaveTextContent(/about pokédex/i);
   });
   test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
     render(<About />, { wrapper: BrowserRouter });
